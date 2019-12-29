@@ -21,14 +21,14 @@ namespace NotesAPI.Controllers
             _context = context;
         }
 
-        // GET: api/Notes
+        // GET: Notes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Note>>> GetNote()
         {
             return await _context.Note.ToListAsync();
         }
 
-        // GET: api/Notes/5
+        // GET:Notes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Note>> GetNote(int id)
         {
@@ -42,7 +42,7 @@ namespace NotesAPI.Controllers
             return note;
         }
 
-        // PUT: api/Notes/5
+        // PUT: Notes/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
@@ -74,7 +74,7 @@ namespace NotesAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Notes
+        // POST: Notes
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
@@ -86,7 +86,7 @@ namespace NotesAPI.Controllers
             return CreatedAtAction("GetNote", new { id = note.Id }, note);
         }
 
-        // DELETE: api/Notes/5
+        // DELETE: Notes/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Note>> DeleteNote(int id)
         {
