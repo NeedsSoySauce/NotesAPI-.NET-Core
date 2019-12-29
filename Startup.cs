@@ -10,6 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using NotesAPI.Models;
+using Pomelo.EntityFrameworkCore.MySql.Storage;
 
 namespace NotesAPI
 {
@@ -25,6 +29,11 @@ namespace NotesAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Setup database connection
+            services.AddDbContextPool<NoteDbContext>(options =>
+                options.UseMySql(Configuration.GetConnectionString("MySQL"), mySqlOptions =>
+                    mySqlOptions.ServerVersion(new ServerVersion(new Version(8, 0, 16), ServerType.MySql))
+            ));
             services.AddControllers();
         }
 
