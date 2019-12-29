@@ -12,7 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-using NotesAPI.Models;
+using NotesAPI.Data;
 using Pomelo.EntityFrameworkCore.MySql.Storage;
 
 namespace NotesAPI
@@ -35,6 +35,9 @@ namespace NotesAPI
                     mySqlOptions.ServerVersion(new ServerVersion(new Version(8, 0, 16), ServerType.MySql))
             ));
             services.AddControllers();
+
+            // services.AddDbContext<NotesContext>(options =>
+            //         options.UseSqlServer(Configuration.GetConnectionString("MySQL")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,14 +1,15 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using NotesAPI.Models;
 
-namespace NotesAPI.Models
+namespace NotesAPI.Data
 {
     public partial class NoteDbContext : DbContext
     {
-        public NoteDbContext()
-        {
-        }
+        // public NoteDbContext()
+        // {
+        // }
 
         public NoteDbContext(DbContextOptions<NoteDbContext> options)
             : base(options)
@@ -21,7 +22,7 @@ namespace NotesAPI.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+// #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseMySql("server=localhost;port=3306;database=notesdb;user=root;password=root", x => x.ServerVersion("8.0.16-mysql"));
             }
         }
