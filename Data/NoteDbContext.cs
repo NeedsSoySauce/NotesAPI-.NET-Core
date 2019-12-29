@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using NotesAPI.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace NotesAPI.Data
 {
@@ -23,7 +24,7 @@ namespace NotesAPI.Data
             if (!optionsBuilder.IsConfigured)
             {
 // #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=localhost;port=3306;database=notesdb;user=root;password=root", x => x.ServerVersion("8.0.16-mysql"));
+                optionsBuilder.UseMySql(Startup.Configuration.GetConnectionString("MySQL"), x => x.ServerVersion("8.0.16-mysql"));
             }
         }
 
